@@ -46,9 +46,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\scripts\Player\Partspec.cs" />
+     <Compile Include="Assets\scripts\Player\followcam.cs" />
      <Compile Include="Assets\scripts\Player\playercontrol.cs" />
      <Compile Include="Assets\scripts\Player\shipspec.cs" />
-     <Compile Include="Assets\scripts\followcam.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity5/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

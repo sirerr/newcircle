@@ -1,9 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\followcam.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\Player\shipspec.cs">
     <Files>
-      <File FileName="Assets\scripts\Player\playercontrol.cs" Line="165" Column="5" />
-      <File FileName="Assets\scripts\followcam.cs" Line="32" Column="14" />
+      <File FileName="Assets\scripts\Player\shipspec.cs" Line="126" Column="3" />
+      <File FileName="Assets\scripts\Player\playercontrol.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\Player\Partspec.cs" Line="20" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
