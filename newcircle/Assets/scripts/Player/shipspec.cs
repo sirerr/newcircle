@@ -108,6 +108,8 @@ public class shipspec : MonoBehaviour {
 			case "weaponpart":
 
 				weaponpart.Add(temppart);
+				transform.GetComponent<weaponcontrol>().currentweapons.Add(temppart);
+				
 				partattached.Add(true);
 				if(temppart.GetComponent<Partspec>().pweight > 0)
 				{

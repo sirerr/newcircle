@@ -75,7 +75,7 @@ public class playercontrol : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 	
 		//main movement forward
 		transform.Translate(0,0,shipmainspeed *Time.deltaTime);
@@ -107,13 +107,13 @@ public class playercontrol : MonoBehaviour {
 
 	 	
 
-//			if(mousepos.y != screencenter)
-//			{
-//				if(mousecenter>=yright && mousecenter<=yleft){
-//				transform.eulerAngles = new Vector3(transform.eulerAngles.x,mousecenter * Time.deltaTime * rotatespeed *-1,transform.eulerAngles.z);
-//				print(mousecenter);
-//				}
-//			}
+			if(mousepos.y != screencenter)
+			{
+				if(mousecenter>=yright && mousecenter<=yleft){
+				transform.eulerAngles = new Vector3(transform.eulerAngles.x,mousecenter * Time.deltaTime * rotatespeed *-1,transform.eulerAngles.z);
+			//	print(mousecenter);
+				}
+			}
 
 			if(shiphor>0)
 			{
@@ -141,9 +141,10 @@ public class playercontrol : MonoBehaviour {
 				//shipbody.transform.Rotate(Vector3.right * Time.deltaTime * rotatespeed);
 			//	print (shipbody.transform.eulerAngles.x);
 
+				 	print (transform.eulerAngles.x);
 				if(transform.eulerAngles.x<= rotateup)
 				{
-					transform.eulerAngles = new Vector3(rotateup,0,0);
+					transform.eulerAngles = new Vector3(rotateup,transform.eulerAngles.y,transform.eulerAngles.z);
 				}
 
 			}else if(shipver<0)
@@ -152,17 +153,16 @@ public class playercontrol : MonoBehaviour {
 			//	shipbody.transform.Rotate(-Vector3.right * Time.deltaTime * rotatespeed);
 			//	print (shipbody.transform.eulerAngles.x);
 
+				print (transform.eulerAngles.x);
 				if(transform.eulerAngles.x>= rotatedown)
 				{
-					transform.eulerAngles = new Vector3(rotatedown,0,0);
+					transform.eulerAngles = new Vector3(rotatedown,transform.eulerAngles.y,transform.eulerAngles.z);
 				}
 			}
 			else
 			{
-				shipbody.transform.localRotation = Quaternion.Slerp(transform.localRotation,shipdefaultquat,Time.time *quatfloat);
-				transform.rotation = Quaternion.Slerp(transform.rotation,defaultquat,Time.time *quatfloat);
-
-			 
+				shipbody.transform.rotation = Quaternion.Lerp(transform.localRotation,shipdefaultquat,Time.deltaTime *quatfloat);
+				transform.rotation = Quaternion.Lerp(transform.localRotation,defaultquat,Time.deltaTime *quatfloat);
 			}
 
 		}

@@ -53,7 +53,7 @@ Material:
         first:
           name: _EmissionMap
         second:
-          m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -73,6 +73,13 @@ Material:
       data:
         first:
           name: _MetallicGlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Illum
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -121,7 +128,7 @@ Material:
       data:
         first:
           name: _EmissionScaleUI
-        second: 1
+        second: 3.71000004
       data:
         first:
           name: _Mode
@@ -134,11 +141,11 @@ Material:
       data:
         first:
           name: _EmissionColor
-        second: {r: 1, g: 0, b: 0, a: 1}
+        second: {r: 3.71000004, g: 0, b: 0, a: 3.71000004}
       data:
         first:
           name: _Color
-        second: {r: .86206913, g: 0, b: 1, a: 1}
+        second: {r: 0, g: 1, b: .213793039, a: 1}
       data:
         first:
           name: _EmissionColorUI
