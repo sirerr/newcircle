@@ -32,9 +32,16 @@ public class shipspec : MonoBehaviour {
 	public List<bool> partattached = new List<bool>();
 	// ship gameobj
 	public GameObject shipbaseobj;
+
+	//test code
+
+
+	//
  
 	// Use this for initialization
 	void Start () {
+
+
 
 
 		// set default values at beginning of game

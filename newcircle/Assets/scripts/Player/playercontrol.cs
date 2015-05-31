@@ -65,7 +65,7 @@ public class playercontrol : MonoBehaviour {
 		{
 			inAndroid = true;
 		}
-		defaultquat = transform.rotation;
+		defaultquat = transform.localRotation;
 		shipdefaultquat = shipbody.transform.rotation;
 		defaultspeed = shipmainspeed;
 
@@ -115,27 +115,31 @@ public class playercontrol : MonoBehaviour {
 				}
 			}
 
-			if(shiphor>0)
+			if(shiphor>0 )
 			{
 				transform.Translate(shipmovementspeed * Time.deltaTime,0,0);
-				shipbody.transform.Rotate(-Vector3.forward * Time.deltaTime *rotatespeed);
-				if(shipbody.transform.eulerAngles.z <= rotateright)
-				{
-					shipbody.transform.eulerAngles = new Vector3(shipbody.transform.eulerAngles.x,shipbody.transform.eulerAngles.y,rotateright);
-				//	print (shipbody.transform.eulerAngles.z);
-				}
+//				transform.Rotate(-Vector3.forward * Time.deltaTime *rotatespeed,Space.Self);
+//				if(transform.eulerAngles.z <= rotateright)
+//				{
+//					 
+//
+//					transform.eulerAngles = new Vector3(transform.eulerAngles.x,transform.eulerAngles.y,rotateright);
+//				//	print (shipbody.transform.eulerAngles.z);
+//				}
 
-			}else if(shiphor<0)
+			}
+			if(shiphor<0 )
 			{
 				transform.Translate(-1 * shipmovementspeed * Time.deltaTime,0,0);
-				shipbody.transform.Rotate(Vector3.forward * Time.deltaTime *rotatespeed);
-				if(shipbody.transform.eulerAngles.z >= rotateleft)
-				{
-					shipbody.transform.eulerAngles = new Vector3(shipbody.transform.eulerAngles.x,shipbody.transform.eulerAngles.y,rotateleft);
-				//	print (shipbody.transform.eulerAngles.z);
-				}
+//				transform.Rotate(Vector3.forward * Time.deltaTime *rotatespeed,Space.Self);
+//				if(transform.eulerAngles.z >= rotateleft)
+//				{
+//					 transform.eulerAngles = new Vector3(transform.eulerAngles.x,transform.eulerAngles.y,rotateleft);
+//				//	print (shipbody.transform.eulerAngles.z);
+//				}
 			}	
-			else if(shipver>0)
+
+			if(shipver>0 )
 			{
 				transform.Rotate(-Vector3.right * Time.deltaTime * rotatespeed);
 				//shipbody.transform.Rotate(Vector3.right * Time.deltaTime * rotatespeed);
@@ -147,7 +151,9 @@ public class playercontrol : MonoBehaviour {
 					transform.eulerAngles = new Vector3(rotateup,transform.eulerAngles.y,transform.eulerAngles.z);
 				}
 
-			}else if(shipver<0)
+			}
+
+			if(shipver<0 )
 			{
 				transform.Rotate(Vector3.right * Time.deltaTime * rotatespeed);
 			//	shipbody.transform.Rotate(-Vector3.right * Time.deltaTime * rotatespeed);
@@ -161,8 +167,8 @@ public class playercontrol : MonoBehaviour {
 			}
 			else
 			{
-				shipbody.transform.rotation = Quaternion.Lerp(transform.localRotation,shipdefaultquat,Time.deltaTime *quatfloat);
-				transform.rotation = Quaternion.Lerp(transform.localRotation,defaultquat,Time.deltaTime *quatfloat);
+				//shipbody.transform.rotation = Quaternion.Lerp(transform.localRotation,shipdefaultquat,Time.deltaTime *quatfloat);
+				transform.localRotation = Quaternion.Lerp(transform.localRotation,defaultquat,Time.deltaTime *quatfloat);
 			}
 
 		}

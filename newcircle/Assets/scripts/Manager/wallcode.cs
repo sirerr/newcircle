@@ -3,9 +3,13 @@ using System.Collections;
 
 public class wallcode : MonoBehaviour {
 
+	public Spacecode spaceref;
+
+	public string areatext;
+
 	// Use this for initialization
 	void Start () {
-	
+		StartCoroutine(quickwait());
 	}
 	
 	// Update is called once per frame
@@ -13,13 +17,30 @@ public class wallcode : MonoBehaviour {
 	
 	}
 
-	void OnTriggerEnter(Collider ahit)
+	void OnTriggerStay(Collider intrig)
 	{
-		if(ahit.gameObject.tag =="Player")
+	if(intrig.gameObject.tag == "Player")
 		{
-
+			spaceref.playerout = true;
+			print("he's in the area");
 		}
 
+	}
+
+	void OnTriggerExit(Collider exittrig)
+	{
+
+		if(exittrig.gameObject.tag =="Player")
+		{
+			spaceref.playerout = false;
+			print("he's out of the area");
+		}
+	}
+
+	IEnumerator quickwait()
+	{
+		yield return new WaitForSeconds(1f);
+		spaceref = GameObject.Find(areatext).GetComponent<Spacecode>();
 	}
 
 }
