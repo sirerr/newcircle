@@ -65,6 +65,8 @@ public class playercontrol : MonoBehaviour {
 		{
 			inAndroid = true;
 		}
+
+
 		defaultquat = transform.localRotation;
 		shipdefaultquat = shipbody.transform.rotation;
 		defaultspeed = shipmainspeed;
@@ -90,17 +92,7 @@ public class playercontrol : MonoBehaviour {
 
 		if(inUnity)
 		{
-			if(Input.GetKeyDown(KeyCode.Space))
-			{
-				if(shipmainspeed<= finalspeed)
-				{
-					shipmainspeed+= incspeed;
-				}
-			}
-			else
-			{
-				shipmainspeed = defaultspeed;
-			}
+		 
 
 			//break in code
 

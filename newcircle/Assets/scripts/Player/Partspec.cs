@@ -28,16 +28,54 @@ public class Partspec : MonoBehaviour {
 	public bool okaytorefresh = true;
 
 	public bool fireweapon = false;
+	//auto target
+	public bool autotarget = false;
+	public bool autofirsttime = true;
+	public float firstautotimelimit = 0;
+	public float nextautotimelimit = 0;
+
+	public List<GameObject> enemylist  = new List<GameObject>();
+
 
 	//charge up and blast ps from cannon possible additions setup time for those and gameobjects
 
 	// Use this for initialization
 	void Start () {
 
-		tempweaponamount = defaultweaponamount;
-	
+		if(transform.tag == "weaponpart"){
+
+			tempweaponamount = defaultweaponamount;
+			if(autotarget)
+			{
+				StartCoroutine(autotarsystem());
+			}
+		}
+
+		if(transform.tag =="enginepart")
+		{
+
+		}
+
 	}
-	
+
+	IEnumerator autotarsystem()
+	{
+		float enemycount = 0;
+		if(autofirsttime){
+			yield return new WaitForSeconds(firstautotimelimit);
+			autofirsttime = false;		
+		}
+		else
+		{
+			yield return new WaitForSeconds(nextautotimelimit);
+		}
+
+		enemylist.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+
+		// add cross hairs to nearest enemy and then check to see if still there with another script then go back here and check again.
+
+	}
+
 	// Update is called once per frame
 	void Update () {
 	
@@ -56,13 +94,7 @@ public class Partspec : MonoBehaviour {
 		}
 	}
 
-//	public void weaponaction()
-//	{
-//		Rigidbody projectile;
-//		projectile = Instantiate(weaponobj,transform.position,transform.rotation) as Rigidbody;
-//		projectile.velocity = transform.TransformDirection(Vector3.forward * weaponspeed);
-//		defaultweaponamount --;
-//	}
+ 
 
 	public void refreshweaponer()
 	{
