@@ -90,6 +90,12 @@ public class playercontrol : MonoBehaviour {
 		mousepos = Input.mousePosition;
 		mousecenter = screencenter - mousepos.x;
 
+		if(inAndroid)
+		{
+			transform.Translate(Input.acceleration.x, 0, -Input.acceleration.z);
+		}
+
+
 		if(inUnity)
 		{
 		 
