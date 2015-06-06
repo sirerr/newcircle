@@ -51,7 +51,8 @@ public class playercontrol : MonoBehaviour {
 	public float yleft= 0;
 	public float yright =0;
 	//test code
-
+	public float androidfloat = 0;
+	//test code
 
 	// Use this for initialization
 	void Start () {
@@ -92,7 +93,7 @@ public class playercontrol : MonoBehaviour {
 
 		if(inAndroid)
 		{
-			transform.Translate(Input.acceleration.x, 0, -Input.acceleration.z);
+			transform.Translate(Input.acceleration.x *androidfloat *Time.deltaTime , Input.acceleration.y * androidfloat * Time.deltaTime , 0);
 		}
 
 
@@ -107,67 +108,92 @@ public class playercontrol : MonoBehaviour {
 
 			if(mousepos.y != screencenter)
 			{
-				if(mousecenter>=yright && mousecenter<=yleft){
-				transform.eulerAngles = new Vector3(transform.eulerAngles.x,mousecenter * Time.deltaTime * rotatespeed *-1,transform.eulerAngles.z);
-			//	print(mousecenter);
+				if(mousecenter>=yright && mousecenter<=yleft)
+				{
+					transform.eulerAngles = new Vector3(transform.eulerAngles.x,mousecenter * Time.deltaTime * rotatespeed *-1,transform.eulerAngles.z);
 				}
 			}
 
-			if(shiphor>0 )
-			{
-				transform.Translate(shipmovementspeed * Time.deltaTime,0,0);
+			transform.Translate(shipmovementspeed * Time.deltaTime * shiphor,0,0);
+
+			transform.Translate(-Vector3.up * shipver * Time.deltaTime * rotatespeed);
+
+//			if(shiphor>0 )
+//			{
+//				transform.Translate(shipmovementspeed * Time.deltaTime,0,0);
 //				transform.Rotate(-Vector3.forward * Time.deltaTime *rotatespeed,Space.Self);
 //				if(transform.eulerAngles.z <= rotateright)
 //				{
 //					 
 //
 //					transform.eulerAngles = new Vector3(transform.eulerAngles.x,transform.eulerAngles.y,rotateright);
-//				//	print (shipbody.transform.eulerAngles.z);
+//					print (shipbody.transform.eulerAngles.z);
 //				}
-
-			}
-			if(shiphor<0 )
-			{
-				transform.Translate(-1 * shipmovementspeed * Time.deltaTime,0,0);
+//
+//			}
+//			if(shiphor<0 )
+//			{
+//				transform.Translate(-1 * shipmovementspeed * Time.deltaTime,0,0);
 //				transform.Rotate(Vector3.forward * Time.deltaTime *rotatespeed,Space.Self);
 //				if(transform.eulerAngles.z >= rotateleft)
 //				{
 //					 transform.eulerAngles = new Vector3(transform.eulerAngles.x,transform.eulerAngles.y,rotateleft);
-//				//	print (shipbody.transform.eulerAngles.z);
+//					print (shipbody.transform.eulerAngles.z);
 //				}
-			}	
+//			}	
 
-			if(shipver>0 )
-			{
-				transform.Rotate(-Vector3.right * Time.deltaTime * rotatespeed);
-				//shipbody.transform.Rotate(Vector3.right * Time.deltaTime * rotatespeed);
-			//	print (shipbody.transform.eulerAngles.x);
 
-				 	print (transform.eulerAngles.x);
-				if(transform.eulerAngles.x<= rotateup)
-				{
-					transform.eulerAngles = new Vector3(rotateup,transform.eulerAngles.y,transform.eulerAngles.z);
-				}
+			//transform.Rotate((-Vector3.right * shipver) * Time.deltaTime * rotatespeed);
 
-			}
+//			if(transform.eulerAngles.x<= rotateup)
+//			{
+//				transform.eulerAngles = new Vector3(rotateup,transform.eulerAngles.y,transform.eulerAngles.z);
+//			}
+//			else if(transform.eulerAngles.x>= rotatedown)
+//			{
+//				transform.eulerAngles = new Vector3(rotatedown,transform.eulerAngles.y,transform.eulerAngles.z);
+//			}
+//			else
+//			{
+//				//shipbody.transform.rotation = Quaternion.Lerp(transform.localRotation,shipdefaultquat,Time.deltaTime *quatfloat);
+//				transform.localRotation = Quaternion.Lerp(transform.localRotation,defaultquat,Time.deltaTime *quatfloat);
+//			}
 
-			if(shipver<0 )
-			{
-				transform.Rotate(Vector3.right * Time.deltaTime * rotatespeed);
-			//	shipbody.transform.Rotate(-Vector3.right * Time.deltaTime * rotatespeed);
-			//	print (shipbody.transform.eulerAngles.x);
 
-				print (transform.eulerAngles.x);
-				if(transform.eulerAngles.x>= rotatedown)
-				{
-					transform.eulerAngles = new Vector3(rotatedown,transform.eulerAngles.y,transform.eulerAngles.z);
-				}
-			}
-			else
-			{
-				//shipbody.transform.rotation = Quaternion.Lerp(transform.localRotation,shipdefaultquat,Time.deltaTime *quatfloat);
-				transform.localRotation = Quaternion.Lerp(transform.localRotation,defaultquat,Time.deltaTime *quatfloat);
-			}
+
+//			if(shipver>0 )
+//			{
+//				transform.Rotate(-Vector3.right * Time.deltaTime * rotatespeed);
+//				//shipbody.transform.Rotate(Vector3.right * Time.deltaTime * rotatespeed);
+//			//	print (shipbody.transform.eulerAngles.x);
+//
+//				 	print (transform.eulerAngles.x);
+//				if(transform.eulerAngles.x<= rotateup)
+//				{
+//					transform.eulerAngles = new Vector3(rotateup,transform.eulerAngles.y,transform.eulerAngles.z);
+//				}
+//
+//			}
+//
+//		
+//
+//			if(shipver<0 )
+//			{
+//				transform.Rotate(Vector3.right * Time.deltaTime * rotatespeed);
+//			//	shipbody.transform.Rotate(-Vector3.right * Time.deltaTime * rotatespeed);
+//			//	print (shipbody.transform.eulerAngles.x);
+//
+//				print (transform.eulerAngles.x);
+//				if(transform.eulerAngles.x>= rotatedown)
+//				{
+//					transform.eulerAngles = new Vector3(rotatedown,transform.eulerAngles.y,transform.eulerAngles.z);
+//				}
+//			}
+//			else
+//			{
+//				//shipbody.transform.rotation = Quaternion.Lerp(transform.localRotation,shipdefaultquat,Time.deltaTime *quatfloat);
+//				transform.localRotation = Quaternion.Lerp(transform.localRotation,defaultquat,Time.deltaTime *quatfloat);
+//			}
 
 		}
 
