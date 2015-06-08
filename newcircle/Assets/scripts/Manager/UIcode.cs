@@ -16,6 +16,11 @@ public class UIcode : MonoBehaviour {
 	//player ref
 	public GameObject playerref;
 
+	//android values
+	public GameObject dirxref;
+	public GameObject diryref;
+	public GameObject dirzref;
+
 	// Use this for initialization
 	void Start () {
 
@@ -32,7 +37,9 @@ public class UIcode : MonoBehaviour {
 		uiplayerhealth = GameObject.Find("phealth");
 		uiplayerpower = GameObject.Find("ppower");
 
-
+		dirxref = GameObject.Find("dirx");
+		diryref = GameObject.Find("diry");
+		dirzref = GameObject.Find("dirz");
 	}
 	
 	// Update is called once per frame
@@ -43,7 +50,9 @@ public class UIcode : MonoBehaviour {
 		uiplayerpower.transform.GetComponent<Text>().text = "Power: " + shipspecref.shippower.ToString();
 		uiplayerhealth.transform.GetComponent<Text>().text = "Health: " + shipspecref.shiphealth.ToString();
 
-
+		dirxref.transform.GetComponent<Text>().text = "Acceleration x: " + playerconref.dir.x.ToString("F2");
+		diryref.transform.GetComponent<Text>().text = "Acceleration y: " + playerconref.dir.y.ToString("F2");
+		dirzref.transform.GetComponent<Text>().text = "Acceleration z: " + playerconref.dir.z.ToString("F2");
 		//ui test ui info
 
 	

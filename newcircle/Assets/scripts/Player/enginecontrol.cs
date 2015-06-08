@@ -12,6 +12,8 @@ public class enginecontrol : MonoBehaviour {
 	public float addtospeed = 0;
 	public float takefrompower = 0;
 
+	public bool extraspeedactive = false;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -39,7 +41,12 @@ public class enginecontrol : MonoBehaviour {
 		{
 			print ("going faster");
 			playerconref.shipmainspeed += addtospeed;
-			shipspecsref.shippower -= takefrompower;
+
+			if(!extraspeedactive)
+			{
+				shipspecsref.shippower -= takefrompower;
+				extraspeedactive = true;
+			}
 		}
 
 
@@ -47,6 +54,7 @@ public class enginecontrol : MonoBehaviour {
 			print ("stay default");
 			playerconref.shipmainspeed = playerconref.defaultspeed;
 			shipspecsref.shippower = shipspecsref.defaultshippower;
+			extraspeedactive = false;
 		}
 
 

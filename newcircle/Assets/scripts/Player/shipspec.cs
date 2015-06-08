@@ -63,8 +63,6 @@ public class shipspec : MonoBehaviour {
 		for( int a =0;a< shipadds.Count;a++)
 		{
  			
-
-
 			GameObject temppart = shipadds[a].transform.GetChild(0).gameObject;
 
 			if(temppart.activeSelf)

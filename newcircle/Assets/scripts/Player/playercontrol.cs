@@ -52,10 +52,16 @@ public class playercontrol : MonoBehaviour {
 	public float yright =0;
 	//test code
 	public float androidfloat = 0;
+	public float accystart = 0;
+	public float accxstart = 0;
+	public Vector3 dir;
+
 	//test code
 
 	// Use this for initialization
 	void Start () {
+
+		dir = Vector3.zero;
 	
 		if(Application.platform == RuntimePlatform.WindowsEditor)
 		{
@@ -67,6 +73,12 @@ public class playercontrol : MonoBehaviour {
 			inAndroid = true;
 		}
 
+		//get start acceleration
+		accystart = Input.acceleration.y;
+		accxstart = Input.acceleration.x;
+
+
+		//
 
 		defaultquat = transform.localRotation;
 		shipdefaultquat = shipbody.transform.rotation;
@@ -79,7 +91,17 @@ public class playercontrol : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-	
+
+		//test code
+	//	Vector3 dir = Vector3.zero;
+
+		dir.x = (Input.acceleration.x - accxstart);
+		dir.y = (Input.acceleration.y - accystart);
+
+		if(dir.sqrMagnitude > 1)
+			dir.Normalize();
+		//test code
+
 		//main movement forward
 		transform.Translate(0,0,shipmainspeed *Time.deltaTime);
 
@@ -93,7 +115,8 @@ public class playercontrol : MonoBehaviour {
 
 		if(inAndroid)
 		{
-			transform.Translate(Input.acceleration.x *androidfloat *Time.deltaTime , Input.acceleration.y * androidfloat * Time.deltaTime , 0);
+			transform.Translate(dir.x *androidfloat *Time.deltaTime , dir.y * androidfloat * Time.deltaTime , 0);
+		//	transform.Rotate(0,-dir.y *androidfloat * Time.deltaTime,0 );
 		}
 
 
@@ -116,7 +139,7 @@ public class playercontrol : MonoBehaviour {
 
 			transform.Translate(shipmovementspeed * Time.deltaTime * shiphor,0,0);
 
-			transform.Translate(-Vector3.up * shipver * Time.deltaTime * rotatespeed);
+			transform.Translate(Vector3.up * shipver * Time.deltaTime);
 
 //			if(shiphor>0 )
 //			{
