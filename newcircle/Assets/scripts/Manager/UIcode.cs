@@ -54,7 +54,23 @@ public class UIcode : MonoBehaviour {
 		diryref.transform.GetComponent<Text>().text = "Acceleration y: " + playerconref.dir.y.ToString("F2");
 		dirzref.transform.GetComponent<Text>().text = "Acceleration z: " + playerconref.dir.z.ToString("F2");
 		//ui test ui info
-
+		
 	
+	}
+
+	public void UIrotatorpos()
+	{
+		playerconref.androidrotatefloat = Mathf.Lerp(playerconref.androidrotatefloat, 1f, playerconref.shipmovementspeed );
+
+	}
+
+	public void UIrotatorneg()
+	{
+		playerconref.androidrotatefloat = Mathf.Lerp(playerconref.androidrotatefloat, -1f, playerconref.shipmovementspeed );
+	}
+
+	public void UIreset()
+	{
+		playerconref.androidrotatefloat = Mathf.Lerp(playerconref.androidrotatefloat, 0f, playerconref.shipmovementspeed );
 	}
 }

@@ -1,9 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\Player\playercontrol.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\Player\enginecontrol.cs">
     <Files>
-      <File FileName="Assets\scripts\Player\playercontrol.cs" Line="119" Column="5" />
-      <File FileName="Assets\scripts\Manager\UIcode.cs" Line="55" Column="102" />
+      <File FileName="Assets\scripts\Player\playercontrol.cs" Line="135" Column="4" />
+      <File FileName="Assets\scripts\Manager\UIcode.cs" Line="69" Column="117" />
       <File FileName="Assets\scripts\Player\enginecontrol.cs" Line="57" Column="29" />
     </Files>
   </MonoDevelop.Ide.Workbench>

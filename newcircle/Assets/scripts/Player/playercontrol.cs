@@ -52,6 +52,7 @@ public class playercontrol : MonoBehaviour {
 	public float yright =0;
 	//test code
 	public float androidfloat = 0;
+	public float androidrotatefloat = 0;
 	public float accystart = 0;
 	public float accxstart = 0;
 	public Vector3 dir;
@@ -62,6 +63,8 @@ public class playercontrol : MonoBehaviour {
 	void Start () {
 
 		dir = Vector3.zero;
+
+	
 	
 		if(Application.platform == RuntimePlatform.WindowsEditor)
 		{
@@ -93,10 +96,10 @@ public class playercontrol : MonoBehaviour {
 	void FixedUpdate () {
 
 		//test code
-	//	Vector3 dir = Vector3.zero;
-
+	// 	Vector3 dir = Vector3.zero;
 		dir.x = (Input.acceleration.x - accxstart);
 		dir.y = (Input.acceleration.y - accystart);
+	
 
 		if(dir.sqrMagnitude > 1)
 			dir.Normalize();
@@ -116,26 +119,31 @@ public class playercontrol : MonoBehaviour {
 		if(inAndroid)
 		{
 			transform.Translate(dir.x *androidfloat *Time.deltaTime , dir.y * androidfloat * Time.deltaTime , 0);
-		//	transform.Rotate(0,-dir.y *androidfloat * Time.deltaTime,0 );
+			 transform.Rotate(0,androidrotatefloat *androidfloat * Time.deltaTime,0 );
 		}
+
+
 
 
 		if(inUnity)
 		{
 		 
 
+			//use for when doing remote work
+			transform.Translate(dir.x *androidfloat *Time.deltaTime , dir.y * androidfloat * Time.deltaTime , 0);
+			transform.Rotate(0,androidrotatefloat *androidfloat * Time.deltaTime,0 );
+
+			print(androidrotatefloat);
+
 			//break in code
 
-
-	 	
-
-			if(mousepos.y != screencenter)
-			{
-				if(mousecenter>=yright && mousecenter<=yleft)
-				{
-					transform.eulerAngles = new Vector3(transform.eulerAngles.x,mousecenter * Time.deltaTime * rotatespeed *-1,transform.eulerAngles.z);
-				}
-			}
+//			if(mousepos.y != screencenter)
+//			{
+//				if(mousecenter>=yright && mousecenter<=yleft)
+//				{
+//					transform.eulerAngles = new Vector3(transform.eulerAngles.x,mousecenter * Time.deltaTime * rotatespeed *-1,transform.eulerAngles.z);
+//				}
+//			}
 
 			transform.Translate(shipmovementspeed * Time.deltaTime * shiphor,0,0);
 
