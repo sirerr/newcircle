@@ -23,7 +23,7 @@ public class followcam : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 	
 		transform.LookAt(playerobj.transform);
 		float step = camspeed * Time.deltaTime;
@@ -33,8 +33,6 @@ public class followcam : MonoBehaviour {
 		{
 			transform.position= Vector3.MoveTowards(transform.position,playerobj.transform.position ,step);
 		}
-
-		//(playerobj.transform.position + new Vector3(0,3,0)) - 
 
 	}
 }

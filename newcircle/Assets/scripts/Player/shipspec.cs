@@ -33,10 +33,13 @@ public class shipspec : MonoBehaviour {
 	// ship gameobj
 	public GameObject shipbaseobj;
 
+	//public count variable
+	static public float shippartcount =0;
+
 	//test code
 
 
-	//
+	//test code
  
 	// Use this for initialization
 	void Start () {

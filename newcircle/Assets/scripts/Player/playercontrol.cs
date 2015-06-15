@@ -51,7 +51,7 @@ public class playercontrol : MonoBehaviour {
 	public float yleft= 0;
 	public float yright =0;
 	//test code
-	public float androidfloat = 0;
+ 
 	public float androidrotatefloat = 0;
 	public float accystart = 0;
 	public float accxstart = 0;
@@ -118,8 +118,8 @@ public class playercontrol : MonoBehaviour {
 
 		if(inAndroid)
 		{
-			transform.Translate(dir.x *androidfloat *Time.deltaTime , dir.y * androidfloat * Time.deltaTime , 0);
-			 transform.Rotate(0,androidrotatefloat *androidfloat * Time.deltaTime,0 );
+			transform.Translate(dir.x * shipmainspeed *Time.deltaTime , dir.y * shipmainspeed * Time.deltaTime , 0);
+			 transform.Rotate(0,androidrotatefloat * shipmovementspeed * Time.deltaTime,0 );
 		}
 
 
@@ -130,10 +130,10 @@ public class playercontrol : MonoBehaviour {
 		 
 
 			//use for when doing remote work
-			transform.Translate(dir.x *androidfloat *Time.deltaTime , dir.y * androidfloat * Time.deltaTime , 0);
-			transform.Rotate(0,androidrotatefloat *androidfloat * Time.deltaTime,0 );
+			transform.Translate(dir.x *shipmainspeed *Time.deltaTime , dir.y * shipmainspeed * Time.deltaTime , 0);
+			transform.Rotate(0,androidrotatefloat *shipmovementspeed * Time.deltaTime,0 );
 
-			print(androidrotatefloat);
+			 
 
 			//break in code
 
@@ -147,7 +147,7 @@ public class playercontrol : MonoBehaviour {
 
 			transform.Translate(shipmovementspeed * Time.deltaTime * shiphor,0,0);
 
-			transform.Translate(Vector3.up * shipver * Time.deltaTime);
+			transform.Translate(Vector3.up * shipver * Time.deltaTime * shipmovementspeed);
 
 //			if(shiphor>0 )
 //			{

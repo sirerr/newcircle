@@ -21,6 +21,12 @@ public class UIcode : MonoBehaviour {
 	public GameObject diryref;
 	public GameObject dirzref;
 
+	//movement bool
+	public bool movebool = true;
+
+	//ui weapon location
+	public GameObject[] toolLocs;
+
 	// Use this for initialization
 	void Start () {
 
@@ -72,5 +78,26 @@ public class UIcode : MonoBehaviour {
 	public void UIreset()
 	{
 		playerconref.androidrotatefloat = Mathf.Lerp(playerconref.androidrotatefloat, 0f, playerconref.shipmovementspeed );
+	}
+
+	public void nomovementbutton()
+	{
+		if(movebool)
+		{
+			movebool = false;
+			playerconref.shipmainspeed = 0;
+			print(movebool);
+		}
+	
+	}
+
+	public void yesmovementbutton()
+	{
+		if(!movebool)
+		{
+			movebool =true;
+			playerconref.shipmainspeed = playerconref.defaultspeed;
+			print(movebool);
+		}
 	}
 }

@@ -36,11 +36,16 @@ public class Partspec : MonoBehaviour {
 
 	public List<GameObject> enemylist  = new List<GameObject>();
 
+	//ship reference
+	public shipspec shipspecscriptref;
+
 
 	//charge up and blast ps from cannon possible additions setup time for those and gameobjects
 
 	// Use this for initialization
 	void Start () {
+
+		shipspecscriptref = transform.root.transform.GetComponent<shipspec>();
 
 		if(transform.tag == "weaponpart"){
 
@@ -80,21 +85,46 @@ public class Partspec : MonoBehaviour {
 	void Update () {
 	
 	}
-	void FixedUpdate() 
+//	void FixedUpdate() 
+//	{
+//		if(fireweapon)
+//		{
+//			fireweapon = false;
+//			if(defaultweaponamount>0)
+//			{
+//				if((shipspecscriptref.shippower - ppowerneeded)>0)
+//				{
+//					Rigidbody projectile;
+//					projectile = Instantiate(weaponobj,transform.position,transform.rotation) as Rigidbody;
+//					projectile.velocity = transform.TransformDirection(Vector3.forward * weaponspeed);
+//					defaultweaponamount --;
+//				}
+//			}
+//			else
+//			{
+//				refreshweaponer();
+//			}
+//		}
+//	}
+
+ public void firetheweapon()
 	{
-
-		if(fireweapon)
+		if(defaultweaponamount>0)
 		{
-			fireweapon = false;
-
-			Rigidbody projectile;
-			projectile = Instantiate(weaponobj,transform.position,transform.rotation) as Rigidbody;
-			projectile.velocity = transform.TransformDirection(Vector3.forward * weaponspeed);
-			defaultweaponamount --;
+			if((shipspecscriptref.shippower - ppowerneeded)>0)
+			{
+				Rigidbody projectile;
+				projectile = Instantiate(weaponobj,transform.position,transform.rotation) as Rigidbody;
+				projectile.velocity = transform.TransformDirection(Vector3.forward * weaponspeed);
+				defaultweaponamount --;
+			}
 		}
-	}
+		else
+		{
+			refreshweaponer();
+		}
 
- 
+	}
 
 	public void refreshweaponer()
 	{
