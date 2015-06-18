@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.CrossPlatformInput;
+using UnityStandardAssets.Utility;
 
 public class playercontrol : MonoBehaviour {
 
@@ -59,6 +61,8 @@ public class playercontrol : MonoBehaviour {
 
 	//test code
 
+	//test code
+
 	// Use this for initialization
 	void Start () {
 
@@ -109,8 +113,13 @@ public class playercontrol : MonoBehaviour {
 		transform.Translate(0,0,shipmainspeed *Time.deltaTime);
 
 		 
-		shiphor = Input.GetAxis("Horizontal");
-		shipver = Input.GetAxis("Vertical");
+//		shiphor = Input.GetAxis("Horizontal");
+//		shipver = Input.GetAxis("Vertical");
+
+		//test code
+//		shiphor = CrossPlatformInputManager.VirtualAxis("Horizontal");
+//		shipver = CrossPlatformInputManager.VirtualAxis("Vertical");
+		//test code
 
 		
 		mousepos = Input.mousePosition;
