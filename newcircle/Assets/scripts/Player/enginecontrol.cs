@@ -1,35 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class enginecontrol : MonoBehaviour {
 
 	// will be adding the UI objects to increase speed
 
+	//part ref
 	public Partspec engpartref;
+	//playercontrol ref
 	public playercontrol playerconref;
 	public shipspec shipspecsref;
-
-	public float addtospeed = 0;
-	public float takefrompower = 0;
+ 
 
 	public bool extraspeedactive = false;
 
+	//ui code ref
+	public UIcode uicoderef;
 	// Use this for initialization
 	void Start () {
-	
 		engpartref = transform.GetComponent<Partspec>();
 		playerconref = transform.root.GetComponent<playercontrol>();
 		shipspecsref = transform.root.GetComponent<shipspec>();
 
-		if(engpartref.incspeed)
-		{
-			addtospeed = engpartref.addedspeed;
-		}
 
-		if(engpartref.powerusage)
-		{
-			takefrompower = engpartref.ppowerneeded;
-		}
+		uicoderef = GameObject.Find("areamanager").transform.GetComponent<UIcode>();
+		uicoderef.themovementbuttons[0].transform.GetComponent<Button>().onClick.AddListener(() => engpartref.gofaster());
+	
 	}
 
 	// goal to create ui objects to enable increases in speed if needed.
@@ -37,25 +34,25 @@ public class enginecontrol : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		if(Input.GetKey(KeyCode.Space) && (shipspecsref.shippower - takefrompower)>0 && playerconref.shipmainspeed < playerconref.finalspeed)
-		{
-			print ("going faster");
-			playerconref.shipmainspeed += addtospeed;
-
-			if(!extraspeedactive)
-			{
-				shipspecsref.shippower -= takefrompower;
-				extraspeedactive = true;
-			}
-		}
-
-
-		if(Input.GetKeyUp(KeyCode.Space)){
-			print ("stay default");
-			playerconref.shipmainspeed = playerconref.defaultspeed;
-			shipspecsref.shippower = shipspecsref.defaultshippower;
-			extraspeedactive = false;
-		}
+//		if(Input.GetKey(KeyCode.Space) && (shipspecsref.shippower - takefrompower)>0 && playerconref.shipmainspeed < playerconref.finalspeed)
+//		{
+//			print ("going faster");
+//			playerconref.shipmainspeed += addtospeed;
+//
+//			if(!extraspeedactive)
+//			{
+//				shipspecsref.shippower -= takefrompower;
+//				extraspeedactive = true;
+//			}
+//		}
+//
+//
+//		if(Input.GetKeyUp(KeyCode.Space)){
+//			print ("stay default");
+//			playerconref.shipmainspeed = playerconref.defaultspeed;
+//			shipspecsref.shippower = shipspecsref.defaultshippower;
+//			extraspeedactive = false;
+//		}
 
 
 	}

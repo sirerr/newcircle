@@ -27,6 +27,12 @@ public class UIcode : MonoBehaviour {
 	//ui weapon location
 	public GameObject[] toolLocs;
 
+	//all joystick array
+	public GameObject[] thejoysticks;
+
+	//all movement speed button array
+	public GameObject[] themovementbuttons;
+
 	// Use this for initialization
 	void Start () {
 

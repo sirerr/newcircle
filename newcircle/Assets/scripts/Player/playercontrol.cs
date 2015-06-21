@@ -27,7 +27,7 @@ public class playercontrol : MonoBehaviour {
 	public float shipver = 0;
 
 	//rotationspeed
-	public float rotatespeed = 0;
+	public float shiprotatespeed = 0;
 
 	//rotation for left to right
 	public float rotateright = 0;
@@ -44,31 +44,42 @@ public class playercontrol : MonoBehaviour {
 	public Quaternion shipdefaultquat;
 	public Quaternion defaultquat;
 	public float quatfloat;
+	public float defaultquatx =0;
+	public float defaultquatz =0;
  	//mouse work, test code
 	public Vector3 mousepos;
 	public float screenhor = 0;
 	public float screenver =0;
 	public float screencenter = 0;
+	public float screencentery = 0;
 	public float mousecenter = 0;
+	public float mousecenterx = 0;
 	public float yleft= 0;
 	public float yright =0;
 	//test code
  
+	//accelerometer code
 	public float androidrotatefloat = 0;
 	public float accystart = 0;
 	public float accxstart = 0;
 	public Vector3 dir;
 
-	//test code
-
+	//joystick
+	public UltimateJoystick joystick1;
+	public UltimateJoystick joystick2;
+	public Vector2 joystickpos;
+	public Vector2 joystickpos2;
+	public UIcode uicoderef;
 	//test code
 
 	// Use this for initialization
 	void Start () {
 
-		dir = Vector3.zero;
+		uicoderef = GameObject.Find("areamanager").GetComponent<UIcode>();
 
-	
+
+
+		dir = Vector3.zero;
 	
 		if(Application.platform == RuntimePlatform.WindowsEditor)
 		{
@@ -85,50 +96,81 @@ public class playercontrol : MonoBehaviour {
 		accxstart = Input.acceleration.x;
 
 
-		//
+		//joystick ref
 
-		defaultquat = transform.localRotation;
+		joystick1 = uicoderef.thejoysticks[0].GetComponent<UltimateJoystick>();
+		joystick2 = uicoderef.thejoysticks[1].GetComponent<UltimateJoystick>();
+
+
+		// quaternion set
+	
 		shipdefaultquat = shipbody.transform.rotation;
+
+		defaultquatx = transform.localRotation.x;
+		defaultquatz = transform.localRotation.z;
+
+
 		defaultspeed = shipmainspeed;
 
 		screenhor = Screen.width;
 		screenver = Screen.height;
 		screencenter = Mathf.Abs(screenhor/2);
+		screencentery = Mathf.Abs(screenver/2);
 	}
-	
+
+	public void newdefaultrot()
+	{
+		defaultquat = transform.localRotation;
+		
+		defaultquat.x = defaultquatx;
+		defaultquat.z = defaultquatz;
+
+	//	print(defaultquat.y);
+
+		transform.rotation = Quaternion.Lerp(transform.rotation,defaultquat,Time.deltaTime *quatfloat);
+	}
+
 	// Update is called once per frame
 	void FixedUpdate () {
 
-		//test code
-	// 	Vector3 dir = Vector3.zero;
+		//accelerometer code
+ 
 		dir.x = (Input.acceleration.x - accxstart);
 		dir.y = (Input.acceleration.y - accystart);
-	
 
 		if(dir.sqrMagnitude > 1)
 			dir.Normalize();
-		//test code
+ 
+		//invoke to get new rotation
+		Invoke("newdefaultrot",2f);
 
 		//main movement forward
 		transform.Translate(0,0,shipmainspeed *Time.deltaTime);
 
-		 
-//		shiphor = Input.GetAxis("Horizontal");
-//		shipver = Input.GetAxis("Vertical");
+		 // gain the axis from horizontal and vertical
+		shiphor = Input.GetAxis("Horizontal");
+		shipver = Input.GetAxis("Vertical");
 
-		//test code
-//		shiphor = CrossPlatformInputManager.VirtualAxis("Horizontal");
-//		shipver = CrossPlatformInputManager.VirtualAxis("Vertical");
-		//test code
+		// gain the axis of the joysticks
+		joystickpos = joystick1.JoystickPosition;
+		joystickpos2 = joystick2.JoystickPosition;
 
-		
+		//for PC mouse position
 		mousepos = Input.mousePosition;
 		mousecenter = screencenter - mousepos.x;
+		mousecenterx = screencenter - mousepos.y;
 
 		if(inAndroid)
 		{
+			//for accelerometer on android
 			transform.Translate(dir.x * shipmainspeed *Time.deltaTime , dir.y * shipmainspeed * Time.deltaTime , 0);
-			 transform.Rotate(0,androidrotatefloat * shipmovementspeed * Time.deltaTime,0 );
+			transform.Rotate(0,androidrotatefloat * shiprotatespeed * Time.deltaTime,0 );
+
+			//for joystick on android
+			transform.Translate(joystickpos.x *Time.deltaTime *shipmovementspeed,joystickpos.y *Time.deltaTime* shipmovementspeed,0);
+			transform.Rotate(joystickpos2.y * Time.deltaTime *shiprotatespeed, joystickpos2.x * Time.deltaTime *shiprotatespeed,0);
+
+
 		}
 
 
@@ -140,23 +182,32 @@ public class playercontrol : MonoBehaviour {
 
 			//use for when doing remote work
 			transform.Translate(dir.x *shipmainspeed *Time.deltaTime , dir.y * shipmainspeed * Time.deltaTime , 0);
-			transform.Rotate(0,androidrotatefloat *shipmovementspeed * Time.deltaTime,0 );
+			transform.Rotate(0,androidrotatefloat * shiprotatespeed * Time.deltaTime,0 );
 
-			 
+			//for joystick on PC
+			transform.Translate(joystickpos.x *Time.deltaTime *shipmovementspeed,joystickpos.y *Time.deltaTime *shipmovementspeed,0);
+			transform.Rotate(joystickpos2.y * Time.deltaTime *-shiprotatespeed, joystickpos2.x * Time.deltaTime *shiprotatespeed,0);
 
-			//break in code
+			//for PC
+			transform.Translate(shipmovementspeed * Time.deltaTime * shiphor,0,0);
+			transform.Translate(Vector3.up * shipver * Time.deltaTime * shipmovementspeed);
+			
 
-//			if(mousepos.y != screencenter)
+
+
+			//test code
+//			if(mousepos.y != screencenter || mousepos.x != screencentery )
 //			{
 //				if(mousecenter>=yright && mousecenter<=yleft)
 //				{
-//					transform.eulerAngles = new Vector3(transform.eulerAngles.x,mousecenter * Time.deltaTime * rotatespeed *-1,transform.eulerAngles.z);
+//					transform.eulerAngles = new Vector3(mousecenterx *Time.deltaTime * shiprotatespeed,mousecenter * Time.deltaTime * shiprotatespeed *-1,transform.eulerAngles.z);
 //				}
 //			}
 
-			transform.Translate(shipmovementspeed * Time.deltaTime * shiphor,0,0);
 
-			transform.Translate(Vector3.up * shipver * Time.deltaTime * shipmovementspeed);
+			//test code
+
+			//transform.eulerAngles.x add this back into the eulerangle if statement above if script doesn't work
 
 //			if(shiphor>0 )
 //			{

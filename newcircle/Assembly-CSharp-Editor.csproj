@@ -87,6 +87,9 @@
      <Compile Include="Assets\PlayMaker\Editor\PlayMakerUpgradeGuide.cs" />
      <Compile Include="Assets\PlayMaker\Editor\PlayMakerWelcomeWindow.cs" />
      <Compile Include="Assets\PlayMaker\Editor\ReportWindow.cs" />
+     <Compile Include="Assets\Ultimate Joystick\Standalone Multi-Touch Input Module\Editor\SMTIMEditor.cs" />
+     <Compile Include="Assets\Ultimate Joystick\UltimateJoystick( C# )\Editor\UltimateJoystickEditor.cs" />
+     <Compile Include="Assets\Ultimate Joystick\UltimateJoystick( xCommon )\Editor\CreateJoystickEditor.cs" />
      <Compile Include="Assets\iTween\PlayMaker\Editor\iTweenMoveToActionEditor.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
@@ -261,6 +264,8 @@
       <Project>{C32A4724-17DC-21F7-BFDD-481F24304D57}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{B81E75F6-877F-5519-6453-5C78D16C3BC5}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript.unityproj">
+      <Project>{8501EB6A-A121-4D59-8D91-B0DD062C2DA8}</Project>      <Name>Assembly-UnityScript</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

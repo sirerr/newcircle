@@ -24,6 +24,7 @@ public class weaponcontrol : MonoBehaviour {
 			uicoderef.toolLocs[i].transform.GetChild(0).gameObject.GetComponent<Button>().onClick.AddListener(() => currentweapons[0].GetComponent<Partspec>().firetheweapon());
 		}
 
+
 	}
 	
 	// Update is called once per frame

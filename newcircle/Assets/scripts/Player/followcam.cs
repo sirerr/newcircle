@@ -17,15 +17,18 @@ public class followcam : MonoBehaviour {
 
 	public Quaternion defaultcamquat;
 
+	//height of the camera
+	public float playerheight;
+
 	// Use this for initialization
 	void Start () {
 		defaultcamquat = transform.rotation;
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void LateUpdate () {
 	
-		transform.LookAt(playerobj.transform);
+
 		float step = camspeed * Time.deltaTime;
 		camdist = Vector3.Distance(playerobj.transform.position, transform.position);
 
@@ -34,5 +37,6 @@ public class followcam : MonoBehaviour {
 			transform.position= Vector3.MoveTowards(transform.position,playerobj.transform.position ,step);
 		}
 
+		transform.LookAt(playerobj.transform);
 	}
 }

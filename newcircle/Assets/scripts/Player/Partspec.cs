@@ -14,11 +14,20 @@ public class Partspec : MonoBehaviour {
 	public bool classspecific = false;
 	public string partclass = "universal";
 
-	//speed inc
+	//for engine systems-------------------------
 	public bool incspeed = false;
 	public float addedspeed = 0;
+	//will boost in speed last forever?
+	public bool shortburst = false;
+	//time limit of the speed boosst
+	public float speedtimelimit = 0;
+	//will control the boost in speed using a cooroutine
+	public bool extraspeedactive = false;
 
-	// for weapon systems
+
+
+
+	// for weapon systems----------------------
 	public bool refreshweapon = false;
 	public float tempweaponamount = 0;
 	public float refreshtime =0;
@@ -36,9 +45,12 @@ public class Partspec : MonoBehaviour {
 
 	public List<GameObject> enemylist  = new List<GameObject>();
 
+	//special additions-----------------
+
+
 	//ship reference
 	public shipspec shipspecscriptref;
-
+	public playercontrol playercontrolref;
 
 	//charge up and blast ps from cannon possible additions setup time for those and gameobjects
 
@@ -46,6 +58,7 @@ public class Partspec : MonoBehaviour {
 	void Start () {
 
 		shipspecscriptref = transform.root.transform.GetComponent<shipspec>();
+		playercontrolref = transform.root.transform.GetComponent<playercontrol>();
 
 		if(transform.tag == "weaponpart"){
 
@@ -62,6 +75,37 @@ public class Partspec : MonoBehaviour {
 		}
 
 	}
+
+	public void gofaster()
+	{
+
+		print ("about to speed up now");
+	 
+		if(!extraspeedactive)
+		{
+			extraspeedactive = true;
+			if((shipspecscriptref.shippower - ppowerneeded)> 0 && playercontrolref.shipmainspeed< playercontrolref.finalspeed)
+			{
+				playercontrolref.shipmainspeed += addedspeed;
+				shipspecscriptref.shippower -= ppowerneeded;
+
+			}
+			if(shortburst)
+			{
+				StartCoroutine(waitandslowdown());
+			}
+		}
+
+	}
+
+	IEnumerator waitandslowdown()
+	{
+		yield return new WaitForSeconds(speedtimelimit);
+		playercontrolref.shipmainspeed = playercontrolref.defaultspeed;
+		shipspecscriptref.shippower = shipspecscriptref.defaultshippower;
+		extraspeedactive = false;
+	}
+
 
 	IEnumerator autotarsystem()
 	{
