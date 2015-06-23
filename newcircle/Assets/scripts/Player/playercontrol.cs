@@ -163,12 +163,12 @@ public class playercontrol : MonoBehaviour {
 		if(inAndroid)
 		{
 			//for accelerometer on android
-			transform.Translate(dir.x * shipmainspeed *Time.deltaTime , dir.y * shipmainspeed * Time.deltaTime , 0);
-			transform.Rotate(0,androidrotatefloat * shiprotatespeed * Time.deltaTime,0 );
+		//	transform.Translate(dir.x * shipmainspeed *Time.deltaTime , dir.y * shipmainspeed * Time.deltaTime , 0);
+		//	transform.Rotate(0,androidrotatefloat * shiprotatespeed * Time.deltaTime,0 );
 
 			//for joystick on android
 			transform.Translate(joystickpos.x *Time.deltaTime *shipmovementspeed,joystickpos.y *Time.deltaTime* shipmovementspeed,0);
-			transform.Rotate(joystickpos2.y * Time.deltaTime *shiprotatespeed, joystickpos2.x * Time.deltaTime *shiprotatespeed,0);
+			transform.Rotate(joystickpos2.y * Time.deltaTime *-shiprotatespeed, joystickpos2.x * Time.deltaTime *shiprotatespeed,0);
 
 
 		}
