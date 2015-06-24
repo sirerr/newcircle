@@ -6,6 +6,7 @@ public class e0attack : MonoBehaviour {
 
 	public GameObject ecenter;
 	public GameObject attackemitter;
+	public bool playerclose = false;
 
 	// Use this for initialization
 	void Start () {
@@ -16,6 +17,12 @@ public class e0attack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+		if(playerclose)
+		{
+
+
+		}
+
 	}
 
 	public void FixedUpdate()
