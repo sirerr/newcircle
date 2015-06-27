@@ -37,6 +37,7 @@ public class e0animation : MonoBehaviour {
 			animcon.SetTrigger(trig1);
 			attackref.playerclose = true;
 			transform.Rotate(new Vector3(0,Mathf.Lerp(0f,spinspeed,.5f),0));
+			attackref.playerclose = true;	
 		}
 			else
 		{
@@ -44,6 +45,7 @@ public class e0animation : MonoBehaviour {
 			animcon.SetTrigger(trig2);
 			attackref.playerclose = false;
 			transform.Rotate(new Vector3(0,0,0));
+			attackref.playerclose = false;
 		}
 	
 
