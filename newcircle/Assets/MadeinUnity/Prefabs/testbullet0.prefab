@@ -13,9 +13,10 @@ GameObject:
   - 114: {fileID: 11410840}
   - 54: {fileID: 5476536}
   - 65: {fileID: 6596558}
+  - 114: {fileID: 11491680}
   m_Layer: 0
   m_Name: testbullet0
-  m_TagString: Untagged
+  m_TagString: playerattack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,14 +131,22 @@ MonoBehaviour:
       actionData:
         actionNames:
         - HutongGames.PlayMaker.Actions.Wait
+        - HutongGames.PlayMaker.Actions.CollisionEvent
         customNames:
         - 
-        actionEnabled: 01
-        actionIsOpen: 01
-        actionStartIndex: 00000000
-        actionHashCodes: 3708ec1a
+        - 
+        actionEnabled: 0101
+        actionIsOpen: 0101
+        actionStartIndex: 0000000003000000
+        actionHashCodes: 3708ec1a621d94f2
         unityObjectParams: []
-        fsmGameObjectParams: []
+        fsmGameObjectParams:
+        - useVariable: 1
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: {fileID: 0}
         fsmOwnerDefaultParams: []
         animationCurveParams: []
         functionCallParams: []
@@ -145,21 +154,32 @@ MonoBehaviour:
         fsmEventTargetParams: []
         fsmPropertyParams: []
         layoutOptionParams: []
-        fsmStringParams: []
+        fsmStringParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: Enemy
         fsmObjectParams: []
         fsmVarParams: []
-        byteData: 000020410046494e495348454401
+        byteData: 000020410046494e4953484544010000000046494e49534845440000000001
         arrayParamSizes: 
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 0f0000001700000001000000
+        paramDataType: 0f0000001700000001000000070000001200000017000000130000000f000000
         paramName:
         - time
         - finishEvent
         - realTime
-        paramDataPos: 00000000050000000d000000
-        paramByteDataSize: 050000000800000001000000
+        - collision
+        - collideTag
+        - sendEvent
+        - storeCollider
+        - storeForce
+        paramDataPos: 00000000050000000d0000000e0000000000000012000000000000001a000000
+        paramByteDataSize: 0500000008000000010000000400000000000000080000000000000005000000
     - name: die
       description: 
       colorIndex: 0
@@ -235,6 +255,20 @@ MonoBehaviour:
     StepFrame: 0
     activeStateName: 
   fsmTemplate: {fileID: 0}
+--- !u!114 &11491680
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 175044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d31de7fb8cf1d4aad902d07a73597b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackpower: 1
+  stayfortime: 0
+  staytime: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

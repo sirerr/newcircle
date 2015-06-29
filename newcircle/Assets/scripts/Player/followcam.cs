@@ -34,7 +34,8 @@ public class followcam : MonoBehaviour {
 
 		if(camdist>=okaydistance)
 		{
-			transform.position= Vector3.MoveTowards(transform.position,playerobj.transform.position ,step);
+		//	transform.position= Vector3.MoveTowards(transform.position,playerobj.transform.position ,step);
+			transform.position = playerobj.transform.position;
 		}
 
 		transform.LookAt(playerobj.transform);

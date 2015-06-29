@@ -12,6 +12,8 @@ TagManager:
   - shipbase
   - LevelManager
   - Enemy
+  - playerattack
+  - enemyattack
   layers:
   - Default
   - TransparentFX

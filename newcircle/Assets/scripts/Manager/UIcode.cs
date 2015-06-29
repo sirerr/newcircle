@@ -23,6 +23,7 @@ public class UIcode : MonoBehaviour {
 
 	//movement bool
 	public bool movebool = true;
+	public bool stopbool = false;
 
 	//ui weapon location
 	public GameObject[] toolLocs;
@@ -46,12 +47,11 @@ public class UIcode : MonoBehaviour {
 
 		// ui ref
 		uiplayerspeed = GameObject.Find("pspeed");
-		uiplayerhealth = GameObject.Find("phealth");
-		uiplayerpower = GameObject.Find("ppower");
+ 
 
-		dirxref = GameObject.Find("dirx");
-		diryref = GameObject.Find("diry");
-		dirzref = GameObject.Find("dirz");
+//		dirxref = GameObject.Find("dirx");
+//		diryref = GameObject.Find("diry");
+//		dirzref = GameObject.Find("dirz");
 	}
 	
 	// Update is called once per frame
@@ -59,32 +59,18 @@ public class UIcode : MonoBehaviour {
 
 		//ui test ui info
 		uiplayerspeed.transform.GetComponent<Text>().text = "Speed: " + playerconref.shipmainspeed.ToString();
-		uiplayerpower.transform.GetComponent<Text>().text = "Power: " + shipspecref.shippower.ToString();
-		uiplayerhealth.transform.GetComponent<Text>().text = "Health: " + shipspecref.shiphealth.ToString();
+ 
+//
+//		dirxref.transform.GetComponent<Text>().text = "Acceleration x: " + playerconref.dir.x.ToString("F2");
+//		diryref.transform.GetComponent<Text>().text = "Acceleration y: " + playerconref.dir.y.ToString("F2");
+//		dirzref.transform.GetComponent<Text>().text = "Acceleration z: " + playerconref.dir.z.ToString("F2");
 
-		dirxref.transform.GetComponent<Text>().text = "Acceleration x: " + playerconref.dir.x.ToString("F2");
-		diryref.transform.GetComponent<Text>().text = "Acceleration y: " + playerconref.dir.y.ToString("F2");
-		dirzref.transform.GetComponent<Text>().text = "Acceleration z: " + playerconref.dir.z.ToString("F2");
 		//ui test ui info
 		
 	
 	}
 
-	public void UIrotatorpos()
-	{
-		playerconref.androidrotatefloat = Mathf.Lerp(playerconref.androidrotatefloat, 1f, playerconref.shipmovementspeed );
 
-	}
-
-	public void UIrotatorneg()
-	{
-		playerconref.androidrotatefloat = Mathf.Lerp(playerconref.androidrotatefloat, -1f, playerconref.shipmovementspeed );
-	}
-
-	public void UIreset()
-	{
-		playerconref.androidrotatefloat = Mathf.Lerp(playerconref.androidrotatefloat, 0f, playerconref.shipmovementspeed );
-	}
 
 	public void nomovementbutton()
 	{
@@ -96,6 +82,25 @@ public class UIcode : MonoBehaviour {
 		}
 	
 	}
+
+
+	public void stopandgo()
+	{
+		if(movebool)
+		{
+			stopbool = true;
+			movebool = false;
+			playerconref.shipmainspeed = 0;
+		}
+		else if(stopbool)
+		{
+			movebool = true;
+			stopbool = false;
+			playerconref.shipmainspeed = playerconref.defaultspeed;
+		}
+
+	}
+
 
 	public void yesmovementbutton()
 	{
