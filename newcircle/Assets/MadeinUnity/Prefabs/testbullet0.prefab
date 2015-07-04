@@ -269,6 +269,7 @@ MonoBehaviour:
   attackpower: 1
   stayfortime: 0
   staytime: 0
+  expPS: {fileID: 135390, guid: 7a58f111ab7c5874fb1e466e810a48bb, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

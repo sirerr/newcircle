@@ -605,6 +605,7 @@
      <Compile Include="Assets\scripts\Enemy\enemattacklogic.cs" />
      <Compile Include="Assets\scripts\Manager\Spacecode.cs" />
      <Compile Include="Assets\scripts\Manager\UIcode.cs" />
+     <Compile Include="Assets\scripts\Manager\enemymanagercode.cs" />
      <Compile Include="Assets\scripts\Manager\wallcode.cs" />
      <Compile Include="Assets\scripts\Player\Attacks\attacklogic.cs" />
      <Compile Include="Assets\scripts\Player\Partspec.cs" />

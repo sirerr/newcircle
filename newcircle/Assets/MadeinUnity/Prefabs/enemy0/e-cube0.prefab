@@ -638,8 +638,8 @@ MonoBehaviour:
   attackemitter: {fileID: 0}
   playerclose: 0
   e0animref: {fileID: 0}
-  attackspeedfloat: 10
-  attackinvoker: .5
+  attackspeedfloat: 30
+  attackinvoker: .100000001
   emmiterobj: {fileID: 198356, guid: cf08c602f30cf2147a21d944469a3216, type: 2}
   attackredo: 0
   firsttime: 0
@@ -656,7 +656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animcon: {fileID: 0}
   attackref: {fileID: 0}
-  spinspeed: 10
+  spinspeed: 15
   playerdistance: 0
   playerclosedistance: 30
   playerloc: {fileID: 0}
@@ -675,7 +675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   multihealth: 0
   ehealth:
-  - 10
+  - 5
   attackref: {fileID: 0}
   shieldattached: 0
   shieldobj: {fileID: 0}
@@ -689,7 +689,7 @@ SkinnedMeshRenderer:
   m_GameObject: {fileID: 133740}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: 037d264d6f8b0e24885466b17b21fa08, type: 2}
   - {fileID: 2100000, guid: e63ed5607f933c144bccfb8816bf0d7e, type: 2}

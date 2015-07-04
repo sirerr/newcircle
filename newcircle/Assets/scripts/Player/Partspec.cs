@@ -52,11 +52,14 @@ public class Partspec : MonoBehaviour {
 	public shipspec shipspecscriptref;
 	public playercontrol playercontrolref;
 
+	public UIcode uicodereference;
+
 	//charge up and blast ps from cannon possible additions setup time for those and gameobjects
 
 	// Use this for initialization
 	void Start () {
 
+		uicodereference = transform.root.transform.GetComponent<playercontrol>().uicoderef;
 		shipspecscriptref = transform.root.transform.GetComponent<shipspec>();
 		playercontrolref = transform.root.transform.GetComponent<playercontrol>();
 

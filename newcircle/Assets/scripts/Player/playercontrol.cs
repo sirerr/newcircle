@@ -116,6 +116,14 @@ public class playercontrol : MonoBehaviour {
 		screenver = Screen.height;
 		screencenter = Mathf.Abs(screenhor/2);
 		screencentery = Mathf.Abs(screenver/2);
+
+		StartCoroutine(waiter());
+	}
+
+	IEnumerator waiter()
+	{
+		yield return new WaitForSeconds(.5f);
+		finalspeed = shipmainspeed + incspeed;
 	}
 
 	public void newdefaultrot()
@@ -163,7 +171,7 @@ public class playercontrol : MonoBehaviour {
 		if(inAndroid)
 		{
 			//for accelerometer on android
-		//	transform.Translate(dir.x * shipmainspeed *Time.deltaTime , dir.y * shipmainspeed * Time.deltaTime , 0);
+			//transform.Translate(dir.x * shipmovementspeed *Time.deltaTime , dir.y * shipmovementspeed * Time.deltaTime , 0);
 		//	transform.Rotate(0,androidrotatefloat * shiprotatespeed * Time.deltaTime,0 );
 
 			//for joystick on android

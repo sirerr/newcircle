@@ -13,15 +13,20 @@ public class weaponcontrol : MonoBehaviour {
 	public GameObject uifirebutton;
 	public UIcode uicoderef;
 
+	private float weaponcount = 0;
+
 	// Use this for initialization
 	void Start () {
 		shipspecref = transform.GetComponent<shipspec>();
 		uicoderef = GameObject.Find("areamanager").transform.GetComponent<UIcode>();
 
+		weaponcount = shipspecref.weaponpart.Count;
+
 		for(int i =0; i<shipspecref.weaponpart.Count; i++)
 		{ 
 			uicoderef.toolLocs[i].transform.GetChild(0).gameObject.SetActive(true);
 			uicoderef.toolLocs[i].transform.GetChild(0).gameObject.GetComponent<Button>().onClick.AddListener(() => currentweapons[0].GetComponent<Partspec>().firetheweapon());
+			uicoderef.toolLocs[i].transform.GetChild(1).gameObject.GetComponent<Text>().text = currentweapons[0].GetComponent<Partspec>().defaultweaponamount.ToString();
 		}
 
 
@@ -30,24 +35,17 @@ public class weaponcontrol : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
  
-//		if(Input.GetMouseButtonDown(0))
-//		{
-//			if(currentweapons[0].GetComponent<Partspec>().defaultweaponamount>0)
-//			{
-//				if((shipspecref.shippower-currentweapons[0].GetComponent<Partspec>().ppowerneeded)>0)
-//				{
-//				
-//				//	currentweapons[0].GetComponent<Partspec>().weaponaction();
-//					currentweapons[0].GetComponent<Partspec>().fireweapon = true;
-//				}
-//			}
-//			else
-//			{
-//				currentweapons[0].GetComponent<Partspec>().refreshweaponer();
-//			}
-//
-//		}
- 
+	switch(weaponcount.ToString())
+		{
+		case "1":
+			uicoderef.toolLocs[0].transform.GetChild(1).gameObject.GetComponent<Text>().text = currentweapons[0].GetComponent<Partspec>().defaultweaponamount.ToString();
+			break;
+		case "2":
+			uicoderef.toolLocs[0].transform.GetChild(1).gameObject.GetComponent<Text>().text = currentweapons[0].GetComponent<Partspec>().defaultweaponamount.ToString();
+			uicoderef.toolLocs[1].transform.GetChild(1).gameObject.GetComponent<Text>().text = currentweapons[1].GetComponent<Partspec>().defaultweaponamount.ToString();
+			break;
+		}
+
 	}
 
 	IEnumerator quicksec()

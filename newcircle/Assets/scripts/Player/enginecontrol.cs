@@ -33,27 +33,6 @@ public class enginecontrol : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-	
-//		if(Input.GetKey(KeyCode.Space) && (shipspecsref.shippower - takefrompower)>0 && playerconref.shipmainspeed < playerconref.finalspeed)
-//		{
-//			print ("going faster");
-//			playerconref.shipmainspeed += addtospeed;
-//
-//			if(!extraspeedactive)
-//			{
-//				shipspecsref.shippower -= takefrompower;
-//				extraspeedactive = true;
-//			}
-//		}
-//
-//
-//		if(Input.GetKeyUp(KeyCode.Space)){
-//			print ("stay default");
-//			playerconref.shipmainspeed = playerconref.defaultspeed;
-//			shipspecsref.shippower = shipspecsref.defaultshippower;
-//			extraspeedactive = false;
-//		}
-
-
+ 
 	}
 }

@@ -62,11 +62,29 @@ public class playerhealth : MonoBehaviour {
 		}
 	
 		powerbarobj.GetComponent<Slider>().value = shipspecref.shippower;
+
+		if(shipspecref.shiphealth < shipspecref.defaultshiphealth)
+		{
+			StartCoroutine(healthrestore());
+		}
 	}
 
 	IEnumerator playerdeath()
 	{
 		yield return new WaitForSeconds(3f);
+
+	}
+
+	IEnumerator healthrestore()
+	{
+		float healthcompare = shipspecref.shiphealth;
+		yield return new WaitForSeconds(5f);
+
+		if(healthcompare == shipspecref.shiphealth)
+		{
+			shipspecref.shiphealth = shipspecref.defaultshiphealth;
+			healthbarobj.GetComponent<Slider>().value = shipspecref.shiphealth;
+		}
 
 	}
 

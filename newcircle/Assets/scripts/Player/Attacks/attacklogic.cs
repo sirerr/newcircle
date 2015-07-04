@@ -12,6 +12,9 @@ public class attacklogic : MonoBehaviour {
 	//time to stay
 	public float staytime = 0;
 
+	//expos game object
+	public GameObject expPS;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -20,5 +23,15 @@ public class attacklogic : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	void OnCollisionEnter(Collision ehit)
+	{
+
+		if(ehit.gameObject.tag == "Enemy")
+		{
+			Instantiate(expPS,transform.position,transform.rotation);
+		}
+
 	}
 }

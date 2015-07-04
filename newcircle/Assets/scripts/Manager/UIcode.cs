@@ -17,9 +17,9 @@ public class UIcode : MonoBehaviour {
 	public GameObject playerref;
 
 	//android values
-	public GameObject dirxref;
-	public GameObject diryref;
-	public GameObject dirzref;
+//	public GameObject dirxref;
+//	public GameObject diryref;
+//	public GameObject dirzref;
 
 	//movement bool
 	public bool movebool = true;
@@ -34,6 +34,9 @@ public class UIcode : MonoBehaviour {
 	//all movement speed button array
 	public GameObject[] themovementbuttons;
 
+	//stop and go text obj
+	public GameObject stopandgotext;
+
 	// Use this for initialization
 	void Start () {
 
@@ -46,7 +49,15 @@ public class UIcode : MonoBehaviour {
 		shipspecref = playerref.GetComponent<shipspec>();
 
 		// ui ref
-		uiplayerspeed = GameObject.Find("pspeed");
+	//	uiplayerspeed = GameObject.Find("pspeed");
+
+		for(int i=0; i<uicanvas.transform.childCount;i++)
+		{
+			if(uicanvas.transform.GetChild(i).name == "Stopandgo")
+			{
+				stopandgotext = uicanvas.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject;
+			}
+		}
  
 
 //		dirxref = GameObject.Find("dirx");
@@ -57,8 +68,10 @@ public class UIcode : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		stopandgotext.GetComponent<Text>().text = playerconref.shipmainspeed.ToString();
+
 		//ui test ui info
-		uiplayerspeed.transform.GetComponent<Text>().text = "Speed: " + playerconref.shipmainspeed.ToString();
+	//	uiplayerspeed.transform.GetComponent<Text>().text = playerconref.shipmainspeed.ToString();
  
 //
 //		dirxref.transform.GetComponent<Text>().text = "Acceleration x: " + playerconref.dir.x.ToString("F2");
@@ -91,6 +104,7 @@ public class UIcode : MonoBehaviour {
 			stopbool = true;
 			movebool = false;
 			playerconref.shipmainspeed = 0;
+
 		}
 		else if(stopbool)
 		{
@@ -101,14 +115,4 @@ public class UIcode : MonoBehaviour {
 
 	}
 
-
-	public void yesmovementbutton()
-	{
-		if(!movebool)
-		{
-			movebool =true;
-			playerconref.shipmainspeed = playerconref.defaultspeed;
-			print(movebool);
-		}
-	}
 }

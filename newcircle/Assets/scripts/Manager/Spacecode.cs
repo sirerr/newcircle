@@ -18,6 +18,13 @@ public class Spacecode : MonoBehaviour {
 	//player warning text;
 	public GameObject rtbtext;
 	public float rtbcourtime = 0;
+
+	//dust maker
+	public GameObject duster;
+	public GameObject[] dustarray;
+	public float dustamount = 0;
+	public float posdustloc = 0;
+	public float negdustloc = 0;
 	//
 
 	// Use this for initialization
@@ -27,6 +34,16 @@ public class Spacecode : MonoBehaviour {
 		followingcam = GameObject.FindGameObjectWithTag("MainCamera");
 	
 		gameplaycanvas.GetComponent<Canvas>().worldCamera = followingcam.transform.GetComponent<Camera>();
+
+		for(int i =0; i<dustamount; i++)
+		{
+			float posx = Random.Range(negdustloc,posdustloc);
+			float posy = Random.Range(negdustloc,posdustloc);
+			float posz = Random.Range(negdustloc,posdustloc);
+
+		dustarray[i] = Instantiate(duster,new Vector3(posx,posy,posz),Quaternion.identity) as GameObject;
+
+		}
 	}
 	
 	// Update is called once per frame
