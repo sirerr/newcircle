@@ -603,6 +603,7 @@
      <Compile Include="Assets\scripts\Enemy\e0attack.cs" />
      <Compile Include="Assets\scripts\Enemy\e0health.cs" />
      <Compile Include="Assets\scripts\Enemy\enemattacklogic.cs" />
+     <Compile Include="Assets\scripts\MainMenu\openingmenu0.cs" />
      <Compile Include="Assets\scripts\Manager\Spacecode.cs" />
      <Compile Include="Assets\scripts\Manager\UIcode.cs" />
      <Compile Include="Assets\scripts\Manager\enemymanagercode.cs" />

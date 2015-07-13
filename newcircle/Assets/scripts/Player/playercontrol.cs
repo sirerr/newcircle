@@ -65,7 +65,7 @@ public class playercontrol : MonoBehaviour {
 	public Vector3 dir;
 
 	//joystick
-	public UltimateJoystick joystick1;
+//	public UltimateJoystick joystick1;
 	public UltimateJoystick joystick2;
 	public Vector2 joystickpos;
 	public Vector2 joystickpos2;
@@ -98,7 +98,7 @@ public class playercontrol : MonoBehaviour {
 
 		//joystick ref
 
-		joystick1 = uicoderef.thejoysticks[0].GetComponent<UltimateJoystick>();
+		//joystick1 = uicoderef.thejoysticks[0].GetComponent<UltimateJoystick>();
 		joystick2 = uicoderef.thejoysticks[1].GetComponent<UltimateJoystick>();
 
 
@@ -160,7 +160,7 @@ public class playercontrol : MonoBehaviour {
 		shipver = Input.GetAxis("Vertical");
 
 		// gain the axis of the joysticks
-		joystickpos = joystick1.JoystickPosition;
+	//	joystickpos = joystick1.JoystickPosition;
 		joystickpos2 = joystick2.JoystickPosition;
 
 		//for PC mouse position
@@ -175,7 +175,7 @@ public class playercontrol : MonoBehaviour {
 		//	transform.Rotate(0,androidrotatefloat * shiprotatespeed * Time.deltaTime,0 );
 
 			//for joystick on android
-			transform.Translate(joystickpos.x *Time.deltaTime *shipmovementspeed,joystickpos.y *Time.deltaTime* shipmovementspeed,0);
+		//	transform.Translate(joystickpos.x *Time.deltaTime *shipmovementspeed,joystickpos.y *Time.deltaTime* shipmovementspeed,0);
 			transform.Rotate(joystickpos2.y * Time.deltaTime *-shiprotatespeed, joystickpos2.x * Time.deltaTime *shiprotatespeed,0);
 
 

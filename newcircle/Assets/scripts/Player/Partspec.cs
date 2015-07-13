@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class Partspec : MonoBehaviour {
 
+	//part name
+	public string partname;
 	//weight of part
 	public float pweight = 0;
 	//does it take power from ship?

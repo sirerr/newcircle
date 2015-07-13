@@ -1,6 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\Manager\UIcode.cs">
+    <Files>
+      <File FileName="Assets\scripts\Player\Partspec.cs" Line="18" Column="2" />
+      <File FileName="Assets\scripts\Manager\UIcode.cs" Line="7" Column="2" />
+      <File FileName="Assets\scripts\Player\playercontrol.cs" Line="163" Column="4" />
+      <File FileName="Assets\scripts\Player\shipspec.cs" Line="28" Column="63" />
+      <File FileName="Assets\scripts\Player\weaponcontrol.cs" Line="29" Column="172" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

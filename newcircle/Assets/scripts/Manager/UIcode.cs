@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class UIcode : MonoBehaviour {
 
+
 	public GameObject uicanvas;
  	//player info
 	public GameObject uiplayerspeed;

@@ -26,6 +26,8 @@ public class weaponcontrol : MonoBehaviour {
 		{ 
 			uicoderef.toolLocs[i].transform.GetChild(0).gameObject.SetActive(true);
 			uicoderef.toolLocs[i].transform.GetChild(0).gameObject.GetComponent<Button>().onClick.AddListener(() => currentweapons[0].GetComponent<Partspec>().firetheweapon());
+			uicoderef.toolLocs[i].transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = currentweapons[0].GetComponent<Partspec>().partname;
+			uicoderef.toolLocs[i].transform.GetChild(1).gameObject.SetActive(true);
 			uicoderef.toolLocs[i].transform.GetChild(1).gameObject.GetComponent<Text>().text = currentweapons[0].GetComponent<Partspec>().defaultweaponamount.ToString();
 		}
 
